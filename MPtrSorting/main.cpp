@@ -2,7 +2,7 @@
 #include <MPointer.h>
 
 int main() {
-    hello();
+    MPointer<int> si = MPointer<int>();
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }

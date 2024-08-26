@@ -7,7 +7,7 @@
 
 
 
-class test1 {
+class MPtr_unittest {
 
 };
 
