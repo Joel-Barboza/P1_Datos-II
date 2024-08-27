@@ -29,32 +29,22 @@ public:
     }
 
 
-
-    /*MPointer& operator=(auto& other)
+    MPointer<T>& operator=(const MPointer& RValue)
     {
-        if (typeid(other) == typeid(T))
-        {
-            std::cout << "Pointer assignment operator" << std::endl;
-            return *this;
-        }
-        if (typeid(MPtr) == other) {
-            std::cout << typeid(MPtr).name() << other <<std::endl;
-            // delete MPtr;
-            // MPtr = new T(*other.MPtr);
-            //return *this;
-        }
-
+        MPtr = RValue.MPtr;
+        return *this;
     }
 
-    MPointer& operator=(T other)
+
+    MPointer<T>& operator=(T RValue)
     {
-        std::cout << other << std::endl;
-        return &other;
-    }*/
+        *MPtr = RValue;
+        return *this;
+    }
 
 private:
     T* MPtr; // Pointer to the actual data
 };
 
-void hello();
+
 #endif //MPOINTER_LIBRARY_H

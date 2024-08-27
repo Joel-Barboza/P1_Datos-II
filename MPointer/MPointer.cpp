@@ -16,7 +16,3 @@ template class MPointer<long>;
 template class MPointer<float>;
 template class MPointer<double>;
 
-void hello()
-{
-    std::cout << "Hello, from MPointer lib" << std::endl;
-}

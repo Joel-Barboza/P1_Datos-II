@@ -2,7 +2,6 @@
 // Created by joel-barboza on 21/08/24.
 //
 
-#include "MPtr_unittest.h"
 #include "gtest/gtest.h"
 #include "MPointer.h"
 
@@ -30,18 +29,21 @@ TEST(MPointers, GetPointerValue)
     EXPECT_EQ(value, 5);
 }
 
-TEST(MPointers, VerifyTypes)
+TEST(MPointers, AssigmentOperator)
 {
-    /*MPointer<int> pointer = MPointer<int>::New();
+    MPointer<int> pointer = MPointer<int>::New();
     MPointer<int> pointer2 = MPointer<int>::New();
     MPointer<int> pointer3 = MPointer<int>::New();
     *pointer = 5;
     pointer2 = pointer;
     pointer3 = 6;
     EXPECT_EQ(&*pointer2, &*pointer);
-    EXPECT_EQ(*pointer3, 6);*/
+    EXPECT_EQ(*pointer3, 6);
 }
 
 
-
-
+int main(int argc, char** argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
