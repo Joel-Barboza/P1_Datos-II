@@ -5,19 +5,16 @@
 #include "MPointer.h"
 #include "MPointerGC.h"
 
-MPointerGC& MPointerGC::instance()
-{
-    static MPointerGC instance_;
-    return instance_;
-}
 
-MPointerGC::MPointerGC() = default;
+/*void savePointer(MPointerBase* mpointer);
+void deletePointer(MPointerBase* mpointer);*/
+/*MPointerGC::MPointerGC() = default;
 
 MPointerGC::~MPointerGC() = default;
 
 MPointerGC::MPointerGC(const MPointerGC&) = default;
 
-MPointerGC& MPointerGC::operator=(const MPointerGC&) { return *this; }
+MPointerGC& MPointerGC::operator=(const MPointerGC&) { return *this; }*/
 
 
 

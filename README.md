@@ -1,2 +1,1 @@
-cd ../MPointers/ && ./compLib.sh
-cd ../Sorting-MPtr/ && ./compRunApp.sh
+## main.cpp incluido en la carpeta de MPtrSorting es el con el que se ordenan elementos usando MPointers

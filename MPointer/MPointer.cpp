@@ -2,11 +2,11 @@
 
 #include <iostream>
 
-template <typename T>
+/*template <typename T>
 MPointer<T> MPointer<T>::New()
 {
-    T* newPtr = new T(); // Reserva memoria para un objeto de tipo T
-    return MPointer<T>(newPtr); // Retorna una instancia de MPointer
+    T* newPtr = new T();
+    return MPointer<T>(newPtr);
 };
 
 template class MPointer<int>;
@@ -14,5 +14,5 @@ template class MPointer<bool>;
 template class MPointer<char>;
 template class MPointer<long>;
 template class MPointer<float>;
-template class MPointer<double>;
+template class MPointer<double>;*/
 

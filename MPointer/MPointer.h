@@ -1,50 +1,75 @@
 #ifndef MPOINTER_LIBRARY_H
 #define MPOINTER_LIBRARY_H
+
 #include <iostream>
 
+#include "MPointerBase.h"
+#include "MPointerGC.h"
+
+
 template <typename T>
-class MPointer
+class MPointer : public MPointerBase
 {
 public:
-    MPointer(T* ptr = nullptr) : MPtr(ptr)
+    static MPointer<T> New()
     {
-    }
+        T* newPtr = new T();
+        auto* mp = new MPointer<T>(newPtr);
+        int id = MPointerGC::instance().generateId();
+        mp->MPtrId = id;
 
-    static MPointer<T> New();
+        MPointerGC::instance().savePointer(mp);
+        return *mp;
+    }
 
     ~MPointer()
     {
-        // delete MPtr;
+        if (MPtr)
+        {
+            MPointerGC::instance().deleteReference(this);
+        }
     }
-
 
     T& operator*()
     {
         return *MPtr;
     }
 
-    T operator&()
+    MPointer& operator=(const MPointer<T>* RValue)
     {
-        return *MPtr;
+        if (this != &RValue)
+        {
+            if (MPtr)
+            {
+                MPointerGC::instance().deleteReference(this);
+            }
+            MPtr = RValue.MPtr;
+            MPtrId = RValue.MPtrId;
+            MPointerGC::instance().incrementMPtrRefs(RValue);
+        }
+
+        return RValue;
     }
 
 
-    MPointer<T>& operator=(const MPointer& RValue)
+    MPointer& operator=(T RValue)
     {
-        MPtr = RValue.MPtr;
-        return *this;
-    }
-
-
-    MPointer<T>& operator=(T RValue)
-    {
-        *MPtr = RValue;
+        if (MPtr)
+        {
+            *MPtr = RValue;
+        }
         return *this;
     }
 
 private:
-    T* MPtr; // Pointer to the actual data
+    explicit MPointer(T* newPtr)
+    {
+        MPtr = newPtr;
+        MPtrId = MPointerGC::instance().generateId();
+    }
+
+    T* MPtr = nullptr;
+    int MPtrId = -1;
 };
 
-
-#endif //MPOINTER_LIBRARY_H
+#endif // MPOINTER_LIBRARY_H
